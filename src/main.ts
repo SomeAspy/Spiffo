@@ -6,10 +6,8 @@ import {
 } from "discord.js";
 import { indexCommands } from "./functions/indexCommands.js";
 
-import { config } from "dotenv";
 import { pushCommands } from "./functions/pushCommands.js";
 import { handleCommand } from "./handler/slashCommand.js";
-config();
 
 const commands = await indexCommands();
 

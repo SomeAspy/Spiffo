@@ -2,10 +2,10 @@
 	"type": "module",
 	"scripts": {
 		"lint": "eslint",
-		"dev": "tsx src/main.ts",
-		"start": "node dist/main.js",
+		"dev": "tsx --env-file=.env src/main.ts",
+		"start": "node --env-file=.env dist/main.js",
 		"build": "tsc",
-		"pushCommands": "tsx src/functions/pushCommands.ts"
+		"pushCommands": "tsx --env-file=.env src/functions/pushCommands.ts"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.8.0",
@@ -19,7 +19,6 @@
 	},
 	"packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e",
 	"dependencies": {
-		"discord.js": "^14.15.3",
-		"dotenv": "^16.4.5"
+		"discord.js": "^14.15.3"
 	}
 }

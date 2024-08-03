@@ -1,0 +1,6 @@
+services:
+  bot:
+    build:
+      dockerfile: dockerfile
+    env_file:
+      - .env
