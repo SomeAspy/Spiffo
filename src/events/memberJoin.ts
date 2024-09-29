@@ -1,4 +1,4 @@
-import { EmbedBuilder, type TextChannel, type GuildMember } from "discord.js";
+import { EmbedBuilder, type GuildMember, type TextChannel } from "discord.js";
 import { client } from "../main.js";
 
 export function memberJoinTasks(member: GuildMember) {

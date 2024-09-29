@@ -1,8 +1,8 @@
 import {
 	EmbedBuilder,
-	type TextChannel,
 	type GuildMember,
 	type PartialGuildMember,
+	type TextChannel,
 } from "discord.js";
 import { client } from "../main.js";
 

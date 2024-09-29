@@ -6,11 +6,11 @@ import {
 } from "discord.js";
 import { indexCommands } from "./functions/indexCommands.js";
 
-import { pushCommands } from "./functions/pushCommands.js";
-import { handleCommand } from "./handler/slashCommand.js";
 import { memberJoinTasks } from "./events/memberJoin.js";
 import { memberLeaveTasks } from "./events/memberLeave.js";
 import { memberUpdateTasks } from "./events/memberUpdate.js";
+import { pushCommands } from "./functions/pushCommands.js";
+import { handleCommand } from "./handler/slashCommand.js";
 
 const commands = await indexCommands();
 
