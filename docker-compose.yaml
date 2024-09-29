@@ -2,5 +2,18 @@ services:
   bot:
     build:
       dockerfile: dockerfile
+    restart: unless-stopped
+    depends_on:
+      - mongo
     env_file:
       - .env
+
+  mongo:
+    image: mongo
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./mongo:/data/db
+    ports:
+      - 27017:27017

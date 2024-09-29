@@ -1,0 +1,3 @@
+# Spiffo
+
+SalemTechSperts Discord Bot

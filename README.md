@@ -1,3 +1,0 @@
-# Spiffo
-
-Discord Bot

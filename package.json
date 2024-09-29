@@ -1,24 +1,22 @@
 {
 	"type": "module",
 	"scripts": {
-		"lint": "eslint",
+		"lint": "biome check",
+		"lint:fix": "biome check --write",
 		"dev": "tsx --env-file=.env src/main.ts",
 		"start": "node --env-file=.env dist/main.js",
 		"build": "tsc",
 		"pushCommands": "tsx --env-file=.env src/functions/pushCommands.ts"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.8.0",
-		"@types/eslint__js": "^8.42.3",
-		"@types/node": "^22.1.0",
-		"eslint": "^9.8.0",
-		"prettier": "^3.3.3",
-		"tsx": "^4.16.5",
-		"typescript": "^5.4.5",
-		"typescript-eslint": "^8.0.0"
+		"@biomejs/biome": "^1.9.2",
+		"@types/node": "^22.7.4",
+		"tsx": "^4.19.1",
+		"typescript": "^5.6.2"
 	},
-	"packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e",
+	"packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b",
 	"dependencies": {
-		"discord.js": "^14.15.3"
+		"discord.js": "^14.16.3",
+		"mongodb": "^6.9.0"
 	}
 }

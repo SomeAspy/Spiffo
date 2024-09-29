@@ -1,5 +1,5 @@
 import {
-	ChatInputCommandInteraction,
+	type ChatInputCommandInteraction,
 	Client,
 	Events,
 	GatewayIntentBits,
@@ -8,10 +8,13 @@ import { indexCommands } from "./functions/indexCommands.js";
 
 import { pushCommands } from "./functions/pushCommands.js";
 import { handleCommand } from "./handler/slashCommand.js";
+import { memberJoinTasks } from "./events/memberJoin.js";
+import { memberLeaveTasks } from "./events/memberLeave.js";
+import { memberUpdateTasks } from "./events/memberUpdate.js";
 
 const commands = await indexCommands();
 
-const client = new Client({
+export const client = new Client({
 	intents: [GatewayIntentBits.Guilds],
 });
 
@@ -23,11 +26,12 @@ client.once(Events.ClientReady, () => {
 
 client.on(Events.InteractionCreate, (interaction) => {
 	if (interaction.isCommand()) {
-		void handleCommand(
-			interaction as ChatInputCommandInteraction,
-			commands,
-		);
+		void handleCommand(interaction as ChatInputCommandInteraction, commands);
 	}
 });
+
+client.on(Events.GuildMemberAdd, memberJoinTasks);
+client.on(Events.GuildMemberRemove, memberLeaveTasks);
+client.on(Events.GuildMemberUpdate, memberUpdateTasks);
 
 await client.login(process.env["BOT_TOKEN"]);

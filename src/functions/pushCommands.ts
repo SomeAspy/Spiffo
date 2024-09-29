@@ -8,8 +8,7 @@ import type { CommandStore } from "../types/Command.js";
 export async function pushCommands(commands: CommandStore) {
 	const restClient = new REST().setToken(process.env["BOT_TOKEN"]!);
 
-	const commandDataJSON: RESTPostAPIChatInputApplicationCommandsJSONBody[] =
-		[];
+	const commandDataJSON: RESTPostAPIChatInputApplicationCommandsJSONBody[] = [];
 
 	commands.forEach((command) => {
 		commandDataJSON.push(command.data.toJSON());
