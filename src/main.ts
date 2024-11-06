@@ -6,16 +6,19 @@ import {
 } from "discord.js";
 import { indexCommands } from "./functions/indexCommands.js";
 
-import { memberJoinTasks } from "./events/memberJoin.js";
-import { memberLeaveTasks } from "./events/memberLeave.js";
-import { memberUpdateTasks } from "./events/memberUpdate.js";
 import { pushCommands } from "./functions/pushCommands.js";
 import { handleCommand } from "./handler/slashCommand.js";
+import { handleMessage } from "./handler/message.js";
+import { handleButton } from "./handler/handleButton.js";
 
 const commands = await indexCommands();
 
 export const client = new Client({
-	intents: [GatewayIntentBits.Guilds],
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.MessageContent,
+		GatewayIntentBits.GuildMessages,
+	],
 });
 
 await pushCommands(commands);
@@ -24,14 +27,22 @@ client.once(Events.ClientReady, () => {
 	console.log("Client Ready!");
 });
 
-client.on(Events.InteractionCreate, (interaction) => {
-	if (interaction.isCommand()) {
-		void handleCommand(interaction as ChatInputCommandInteraction, commands);
+client.on(Events.InteractionCreate, async (interaction) => {
+	try {
+		if (interaction.isCommand()) {
+			await handleCommand(interaction as ChatInputCommandInteraction, commands);
+		} else if (interaction.isButton()) {
+			await handleButton(interaction, commands);
+		}
+	} catch (error) {
+		console.error(error);
 	}
 });
 
-client.on(Events.GuildMemberAdd, memberJoinTasks);
-client.on(Events.GuildMemberRemove, memberLeaveTasks);
-client.on(Events.GuildMemberUpdate, memberUpdateTasks);
+client.on(Events.MessageCreate, (message) => {
+	if (!message.author.bot) {
+		void handleMessage(message);
+	}
+});
 
 await client.login(process.env["BOT_TOKEN"]);

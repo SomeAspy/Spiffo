@@ -11,7 +11,9 @@ export async function pushCommands(commands: CommandStore) {
 	const commandDataJSON: RESTPostAPIChatInputApplicationCommandsJSONBody[] = [];
 
 	commands.forEach((command) => {
-		commandDataJSON.push(command.data.toJSON());
+		if (command.data.name !== "ignore") {
+			commandDataJSON.push(command.data.toJSON());
+		}
 	});
 
 	console.log(`Pushing ${commands.size.toString()} commands`);
