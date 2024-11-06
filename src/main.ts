@@ -7,9 +7,9 @@ import {
 import { indexCommands } from "./functions/indexCommands.js";
 
 import { pushCommands } from "./functions/pushCommands.js";
-import { handleCommand } from "./handler/slashCommand.js";
-import { handleMessage } from "./handler/message.js";
 import { handleButton } from "./handler/handleButton.js";
+import { handleMessage } from "./handler/message.js";
+import { handleCommand } from "./handler/slashCommand.js";
 
 const commands = await indexCommands();
 

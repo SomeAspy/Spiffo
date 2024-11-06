@@ -2,8 +2,8 @@ import {
 	ActionRowBuilder,
 	ButtonBuilder,
 	type ButtonInteraction,
-	type ThreadChannel,
 	SlashCommandBuilder,
+	type ThreadChannel,
 } from "discord.js";
 import {
 	markSolvedButton,

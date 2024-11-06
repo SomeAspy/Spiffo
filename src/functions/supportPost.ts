@@ -1,9 +1,9 @@
 import {
-	type Message,
 	ActionRowBuilder,
 	ButtonBuilder,
 	ButtonStyle,
 	EmbedBuilder,
+	type Message,
 } from "discord.js";
 import { askGemini } from "../lib/gemini.js";
 
