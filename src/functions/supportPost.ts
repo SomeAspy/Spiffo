@@ -73,18 +73,23 @@ export async function supportPost(message: Message) {
 			.then((message) => {
 				message.pin();
 			});
-		try {
-			void thread.send(`
+		const AISolution = await askGemini(
+			`${AttemptToSolvePrompt}${message.content}`,
+		);
+		if (AISolution !== "{Error generating AI response}") {
+			try {
+				void thread.send(`
 ## AI Generated Solution
 ⚠️ This solution is AI generated, therefore information may be inaccurate or out of date.
 SalemTechsperts is not responsible for any damage that may occur following this advice.
 If you aren't sure about it, wait for our support volunteers!
 *although the AI may infer it, it cannot respond further*
 
-${await askGemini(`${AttemptToSolvePrompt}${message.content}`)}
+${AISolution}
 			`);
-		} catch {
-			/* AI will sometimes still generate solutions that are too long. */
+			} catch {
+				/* AI will sometimes still generate solutions that are too long. */
+			}
 		}
 	});
 }
