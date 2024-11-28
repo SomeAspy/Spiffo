@@ -1,4 +1,5 @@
 import {
+	AutocompleteInteraction,
 	type ChatInputCommandInteraction,
 	Client,
 	Events,
@@ -29,6 +30,12 @@ client.once(Events.ClientReady, () => {
 
 client.on(Events.InteractionCreate, async (interaction) => {
 	try {
+		if (
+			interaction.channel?.isDMBased() &&
+			!(interaction instanceof AutocompleteInteraction)
+		) {
+			interaction.reply("This bot is not intended to be used in DMs");
+		}
 		if (interaction.isCommand()) {
 			await handleCommand(interaction as ChatInputCommandInteraction, commands);
 		} else if (interaction.isButton()) {

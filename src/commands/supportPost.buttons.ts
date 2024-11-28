@@ -12,13 +12,20 @@ import {
 
 export const data = new SlashCommandBuilder().setName("ignore");
 
-async function isOriginalPoster(
+async function isAbleToManage(
 	interaction: ButtonInteraction,
 ): Promise<boolean> {
+	if (!interaction.inCachedGuild()) {
+		await interaction.guild?.fetch();
+	}
 	const thread = interaction.channel as ThreadChannel;
 	try {
+		await interaction.channel?.fetch();
 		const firstMessage = await thread.fetchStarterMessage();
-		return firstMessage!.author.id === interaction.user.id;
+		return (
+			firstMessage!.author.id === interaction.user.id ||
+			thread.permissionsFor(interaction.user)!.has("ManageChannels")
+		);
 	} catch {
 		await interaction.reply("Original post was deleted!");
 		await thread.setLocked();
@@ -36,7 +43,7 @@ export const buttons = [
 	{
 		id: "support.pingHelpers",
 		execute: async (interaction: ButtonInteraction) => {
-			if (!(await isOriginalPoster(interaction))) {
+			if (!(await isAbleToManage(interaction))) {
 				interaction.reply({
 					ephemeral: true,
 					content: "You are not the owner of this thread!",
@@ -60,7 +67,7 @@ export const buttons = [
 		id: "support.solved",
 		execute: async (interaction: ButtonInteraction) => {
 			const thread = interaction.channel as ThreadChannel;
-			if (!(await isOriginalPoster(interaction))) {
+			if (!(await isAbleToManage(interaction))) {
 				interaction.reply({
 					ephemeral: true,
 					content: "You are not the owner of this thread!",
