@@ -83,7 +83,7 @@ export const buttons = [
 				],
 			});
 			await thread.send(
-				"The author has marked this post as solved, now closing!",
+				`${interaction.user.displayName} has marked this post as solved, now closing!`,
 			);
 			await thread.setLocked();
 			await thread.setArchived();
