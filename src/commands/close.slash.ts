@@ -5,7 +5,7 @@ import {
 } from "discord.js";
 
 export const data = new SlashCommandBuilder()
-	.setName("closeThread")
+	.setName("close")
 	.setDescription("close this thread")
 	.setDefaultMemberPermissions(PermissionFlagsBits.ManageThreads);
 
