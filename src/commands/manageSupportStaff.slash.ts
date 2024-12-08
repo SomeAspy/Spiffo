@@ -30,15 +30,16 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 			return;
 		}
 		if (
-			interaction.member.roles.cache.has("1315433023252201543") ||
+			interaction.member.roles.cache.has("1315433023252201543") || // support director
 			interaction.member.permissions.has(PermissionFlagsBits.ManageRoles) ||
 			interaction.member.permissions.has(PermissionFlagsBits.Administrator)
 		) {
 			const modifyUser = interaction.options.getMember("user")!;
 			if (interaction.options.getSubcommand() === "add") {
-				await modifyUser.roles.add("1305568566359101490");
+				await modifyUser.roles.add("1305568566359101490"); // support jannies
 			} else {
-				await modifyUser.roles.remove("1305568566359101490");
+				await modifyUser.roles.remove("1305568566359101490"); // support jannies
+				await modifyUser.roles.remove("1299461176350216234"); // support volunteers
 			}
 			interaction.reply(`Modified ${modifyUser.displayName}`);
 		} else {
