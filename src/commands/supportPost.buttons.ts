@@ -15,9 +15,6 @@ export const data = new SlashCommandBuilder().setName("ignore");
 async function isAbleToManage(
 	interaction: ButtonInteraction,
 ): Promise<boolean> {
-	if (!interaction.inCachedGuild()) {
-		await interaction.guild?.fetch();
-	}
 	const thread = interaction.channel as ThreadChannel;
 	try {
 		await interaction.channel?.fetch();
