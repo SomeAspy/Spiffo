@@ -54,6 +54,7 @@ export async function supportPost(message: Message) {
 	}
 
 	const title = await askGemini(`${geminiPrompt}${message.content}`);
+
 	const embed = new EmbedBuilder()
 		.setTitle(`Hi ${message.author.displayName}!`)
 		.setDescription(newSupportPostMessage);
@@ -76,6 +77,11 @@ export async function supportPost(message: Message) {
 		const AISolution = await askGemini(
 			`${AttemptToSolvePrompt}${message.content}`,
 		);
+		if (title === "{Error generating AI response}") {
+			void thread.send(
+				"⚠️ Failed to create AI title! <@&1305568566359101490> please add an appropriate title manually!",
+			);
+		}
 		if (AISolution !== "{Error generating AI response}") {
 			try {
 				void thread.send(`
