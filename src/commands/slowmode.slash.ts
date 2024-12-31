@@ -14,7 +14,7 @@ export const data = new SlashCommandBuilder()
 			.setDescription("Time in seconds to slowmode")
 			.setMinValue(0),
 	)
-	.setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels);
+	.setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages);
 
 export async function execute(interaction: ChatInputCommandInteraction) {
 	if (interaction.inGuild()) {

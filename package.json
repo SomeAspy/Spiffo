@@ -13,7 +13,7 @@
 		"tsx": "^4.19.2",
 		"typescript": "^5.7.2"
 	},
-	"packageManager": "pnpm@10.0.0-alpha.2+sha512.f18a59ca3611002321af7681e6d49234cb3ece8496b05818be5b1081168ec21b8c3d28cbb4351e2fdec66ca95e6516faaf08b95b755013c88cf5174d5029865c",
+	"packageManager": "pnpm@10.0.0-rc.2+sha512.b6e59b96f90ca92449ac2f6dca9b430880448fc97d21f0fa9200e3d5ddb5289ad535255400554f7f3486e2d60058492161aaa9b58828e81f50c096718be9d156",
 	"dependencies": {
 		"@google/generative-ai": "^0.21.0",
 		"discord.js": "^14.16.3"
