@@ -1,0 +1,12 @@
+services:
+  mongo:
+    image: mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+      MONGO_INITDB_DATABASE: SpiffoBot
+    ports:
+      - 127.0.0.1:27017:27017
+    volumes:
+      - ./.mongo:/data/db
