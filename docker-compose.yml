@@ -3,6 +3,7 @@ services:
     image: mongo
     restart: unless-stopped
     environment:
+      # These are correct - they use the .env vars
       MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
       MONGO_INITDB_DATABASE: SpiffoBot
@@ -10,3 +11,14 @@ services:
       - 127.0.0.1:27017:27017
     volumes:
       - ./.mongo:/data/db
+
+  spiffo:
+    # ... (ensure depends_on uses service_healthy)
+    depends_on:
+      - mongo
+    build:
+      dockerfile: dockerfile
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+    

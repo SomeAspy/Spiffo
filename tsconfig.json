@@ -15,7 +15,9 @@
 		"outDir": "dist",
 		"removeComments": true,
 		"lib": ["ESNext"],
-		"target": "ESNext"
+		"target": "ESNext",
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true
 	},
 	"include": ["src/**/*"],
 	"exclude": ["node_modules", "dist"]

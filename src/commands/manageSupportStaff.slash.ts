@@ -44,7 +44,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 			interaction.reply(`Modified ${modifyUser.displayName}`);
 		} else {
 			void interaction.reply({
-				ephemeral: true,
+				flags: "Ephemeral",
 				content: "You are not authorized to use this command!",
 			});
 		}
