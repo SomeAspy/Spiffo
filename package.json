@@ -4,7 +4,7 @@
 		"lint": "biome check",
 		"lint:fix": "biome check --write",
 		"dev": "tsx --env-file=.env src/main.ts",
-		"start": "node --env-file=.env dist/main.js",
+		"start": "tsx --env-file=.env dist/main.js",
 		"build": "tsc"
 	},
 	"devDependencies": {
