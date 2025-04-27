@@ -3,7 +3,7 @@ import {
 	ButtonBuilder,
 	type ButtonInteraction,
 	SlashCommandBuilder,
-	TextChannel,
+	type TextChannel,
 	type ThreadChannel,
 } from "discord.js";
 import {
