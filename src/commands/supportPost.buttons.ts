@@ -3,6 +3,7 @@ import {
 	ButtonBuilder,
 	type ButtonInteraction,
 	SlashCommandBuilder,
+	TextChannel,
 	type ThreadChannel,
 } from "discord.js";
 import {
@@ -56,7 +57,14 @@ export const buttons = [
 				],
 			});
 			await (interaction.channel as ThreadChannel).send(
-				"<@&1299461176350216234>",
+				"Request for support sent, please hold!",
+			);
+			(
+				interaction.client.channels.cache.get(
+					"1305571250499883018",
+				)! as TextChannel
+			).send(
+				`Help requested in <#${interaction.channelId}>! <@&1299461176350216234>`,
 			);
 		},
 	},

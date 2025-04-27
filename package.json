@@ -9,19 +9,21 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
-		"@types/node": "^22.14.1",
+		"@types/node": "^22.15.2",
 		"tsx": "^4.19.3",
 		"typescript": "^5.8.3"
 	},
 	"dependencies": {
 		"@google/generative-ai": "^0.24.0",
 		"@typegoose/typegoose": "^12.14.0",
-		"discord.js": "^14.18.0",
-		"mongoose": "^8.13.2",
+		"discord.js": "^14.19.1",
+		"mongoose": "^8.14.0",
 		"reflect-metadata": "^0.2.2"
 	},
 	"packageManager": "pnpm@10.9.0+sha512.0486e394640d3c1fb3c9d43d49cf92879ff74f8516959c235308f5a8f62e2e19528a65cdc2a3058f587cde71eba3d5b56327c8c33a97e4c4051ca48a10ca2d5f",
 	"pnpm": {
-		"onlyBuiltDependencies": ["esbuild"]
+		"onlyBuiltDependencies": [
+			"esbuild"
+		]
 	}
 }
