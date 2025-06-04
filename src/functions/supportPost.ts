@@ -34,7 +34,7 @@ SalemTechsperts and members of the server are not responsible for any further da
 `;
 
 const AttemptToSolvePrompt =
-	"Please attempt to solve the user's problem. You cannot receive follow-up responses. Do NOT use any links in your response. Use Discord flavored MarkDown. Keep ALL responses under 1000 characters. If the user lacks important details, ask them to include them. The user's question is as follows: ";
+	"Please attempt to solve the user's problem. You cannot receive follow-up responses. Do NOT use any links in your response. Use Discord flavored MarkDown. Keep ALL responses under 1000 characters. If the user lacks important details, ask them to include them. Do NOT suggest specific parts. The user's question is as follows: ";
 
 export const pingSupportButton = new ButtonBuilder()
 	.setCustomId("support.pingHelpers")

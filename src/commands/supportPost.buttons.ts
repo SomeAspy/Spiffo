@@ -64,7 +64,7 @@ export const buttons = [
 					"1305571250499883018",
 				)! as TextChannel
 			).send(
-				`Help requested in <#${interaction.channelId}>! <@&1299461176350216234>`,
+				`Help requested in https://canary.discord.com/channels/${interaction.guildId}/${interaction.channelId}! <@&1299461176350216234>`,
 			);
 		},
 	},

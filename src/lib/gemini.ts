@@ -13,7 +13,7 @@ function timeout(time: number) {
 async function geminiAPIRequest(question: string) {
 	return new Promise<string>((resolve, reject) => {
 		const reply = geminiAPI
-			.getGenerativeModel({ model: "gemini-1.5-flash" })
+			.getGenerativeModel({ model: "gemini-2.0-flash" })
 			.generateContent([question]);
 		reply
 			.then((res) => {

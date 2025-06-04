@@ -3,7 +3,6 @@ services:
     image: mongo
     restart: unless-stopped
     environment:
-      # These are correct - they use the .env vars
       MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
       MONGO_INITDB_DATABASE: SpiffoBot
@@ -13,7 +12,7 @@ services:
       - ./.mongo:/data/db
 
   spiffo:
-    # ... (ensure depends_on uses service_healthy)
+    restart: unless-stopped
     depends_on:
       - mongo
     build:
