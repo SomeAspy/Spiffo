@@ -2,6 +2,7 @@ services:
   mongo:
     image: mongo
     restart: unless-stopped
+    command: mongod --quiet --logpath /dev/null
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
