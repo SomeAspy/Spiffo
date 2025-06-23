@@ -49,7 +49,9 @@ client.on(Events.InteractionCreate, async (interaction) => {
 });
 
 client.on(Events.MessageCreate, (message) => {
-	void handleMessage(message);
+	if (!message.author.bot) {
+		void handleMessage(message);
+	}
 });
 
 await client.login(process.env["BOT_TOKEN"]);
