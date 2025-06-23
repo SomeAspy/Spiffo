@@ -3,7 +3,7 @@ import {
 	PermissionFlagsBits,
 	SlashCommandBuilder,
 } from "discord.js";
-import { newTag, findTag } from "../lib/mongo.js";
+import { findTag, newTag } from "../lib/mongo.js";
 export const data = new SlashCommandBuilder()
 	.setName("tag")
 	.setDescription("Manage tags")
@@ -58,7 +58,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 		return;
 	}
 	if (
-		interaction.member.roles.cache.has("1315433023252201543") || // support director
+		interaction.member.permissions.has(PermissionFlagsBits.ModerateMembers) ||
 		interaction.member.permissions.has(PermissionFlagsBits.ManageGuild) ||
 		interaction.member.permissions.has(PermissionFlagsBits.Administrator)
 	) {

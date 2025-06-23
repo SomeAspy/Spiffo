@@ -30,7 +30,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 			return;
 		}
 		if (
-			interaction.member.roles.cache.has("1315433023252201543") || // support director
+			interaction.member.permissions.has(PermissionFlagsBits.ModerateMembers) ||
 			interaction.member.permissions.has(PermissionFlagsBits.ManageRoles) ||
 			interaction.member.permissions.has(PermissionFlagsBits.Administrator)
 		) {

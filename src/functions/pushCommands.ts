@@ -3,6 +3,7 @@ import {
 	type RESTPostAPIChatInputApplicationCommandsJSONBody,
 	Routes,
 } from "discord.js";
+
 import type { CommandStore } from "../types/Command.js";
 
 export async function pushCommands(commands: CommandStore) {

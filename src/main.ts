@@ -5,7 +5,7 @@ import {
 	type ChatInputCommandInteraction,
 	Client,
 	Events,
-	GatewayIntentBits,
+	IntentsBitField,
 } from "discord.js";
 import { indexCommands } from "./functions/indexCommands.js";
 
@@ -18,9 +18,9 @@ const commands = await indexCommands();
 
 export const client = new Client({
 	intents: [
-		GatewayIntentBits.Guilds,
-		GatewayIntentBits.MessageContent,
-		GatewayIntentBits.GuildMessages,
+		IntentsBitField.Flags.Guilds,
+		IntentsBitField.Flags.MessageContent,
+		IntentsBitField.Flags.GuildMessages,
 	],
 });
 
@@ -49,9 +49,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 });
 
 client.on(Events.MessageCreate, (message) => {
-	//if (!message.author.bot) {
 	void handleMessage(message);
-	//}
 });
 
 await client.login(process.env["BOT_TOKEN"]);

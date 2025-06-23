@@ -8,19 +8,18 @@
 		"build": "tsc"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^1.9.4",
-		"@types/node": "^22.15.29",
-		"tsx": "^4.19.4",
+		"@biomejs/biome": "^2.0.5",
+		"@types/node": "^24.0.3",
+		"tsx": "^4.20.3",
 		"typescript": "^5.8.3"
 	},
 	"dependencies": {
 		"@google/generative-ai": "^0.24.1",
-		"@typegoose/typegoose": "^12.16.0",
-		"discord.js": "^14.19.3",
-		"mongoose": "^8.15.1",
-		"reflect-metadata": "^0.2.2"
+		"@typegoose/typegoose": "^12.17.0",
+		"discord.js": "^14.20.0",
+		"mongoose": "^8.16.0"
 	},
-	"packageManager": "pnpm@10.9.0+sha512.0486e394640d3c1fb3c9d43d49cf92879ff74f8516959c235308f5a8f62e2e19528a65cdc2a3058f587cde71eba3d5b56327c8c33a97e4c4051ca48a10ca2d5f",
+	"packageManager": "pnpm@10.12.2+sha512.a32540185b964ee30bb4e979e405adc6af59226b438ee4cc19f9e8773667a66d302f5bfee60a39d3cac69e35e4b96e708a71dd002b7e9359c4112a1722ac323f",
 	"pnpm": {
 		"onlyBuiltDependencies": [
 			"esbuild"
