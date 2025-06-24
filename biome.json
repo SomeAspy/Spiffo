@@ -7,7 +7,8 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"includes": ["**"]
+		"includes": ["**"],
+		"experimentalScannerIgnores": [".mongo"]
 	},
 	"formatter": {
 		"enabled": true,

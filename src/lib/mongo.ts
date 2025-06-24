@@ -7,9 +7,9 @@ await mongoose.connect(
 	`mongodb://${process.env["DB_USER"]}:${process.env["DB_PASSWORD"]}@mongo:27017/SpiffoBot?authSource=admin`,
 );
 
-const db = mongoose.connection.db;
+const _db = mongoose.connection.db;
 
-const newServer = async (serverID: string) => {
+const _newServer = async (serverID: string) => {
 	await new (getModelForClass(ServerData))({
 		serverID,
 		memberData: [],
@@ -18,7 +18,7 @@ const newServer = async (serverID: string) => {
 	}).save();
 };
 
-const newMember = async (memberID: string) => {
+const _newMember = async (memberID: string) => {
 	await new (getModelForClass(MemberData))({
 		memberID,
 		notes: [],
