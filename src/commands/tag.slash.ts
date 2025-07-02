@@ -3,7 +3,7 @@ import {
 	PermissionFlagsBits,
 	SlashCommandBuilder,
 } from "discord.js";
-import { findTag, newTag } from "../lib/mongo.js";
+import { findTag, getAllTags, newTag } from "../lib/mongo.js";
 export const data = new SlashCommandBuilder()
 	.setName("tag")
 	.setDescription("Manage tags")
@@ -51,6 +51,9 @@ export const data = new SlashCommandBuilder()
 					.setName("trigger")
 					.setDescription("Which tag to delete"),
 			),
+	)
+	.addSubcommand((subcommand) =>
+		subcommand.setName("list").setDescription("List all tags"),
 	);
 
 export async function execute(interaction: ChatInputCommandInteraction) {
@@ -95,19 +98,32 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 					});
 				}
 				break;
-			case "delete": {
-				const tag = await findTag(trigger);
-				if (!tag) {
-					interaction.reply({
+			case "delete":
+				{
+					const tag = await findTag(trigger);
+					if (!tag) {
+						interaction.reply({
+							flags: "Ephemeral",
+							content: "The specified tag does not exist!",
+						});
+						return;
+					}
+					await tag.deleteOne({ trigger });
+					await interaction.reply({
 						flags: "Ephemeral",
-						content: "The specified tag does not exist!",
+						content: `Deleted ${trigger}`,
 					});
-					return;
 				}
-				await tag.deleteOne({ trigger });
-				await interaction.reply({
-					flags: "Ephemeral",
-					content: `Deleted ${trigger}`,
+				break;
+			case "list": {
+				const tags = await getAllTags();
+				let tagsString = "";
+				tags.forEach((tag) => {
+					tagsString += tag;
+					tagsString += "\n";
+				});
+				void interaction.reply({
+					content: `\`\`\`${tagsString}\`\`\``,
 				});
 			}
 		}

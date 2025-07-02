@@ -7,9 +7,9 @@ export async function handleMessage(message: Message) {
 		supportPost(message);
 	}
 	try {
-		const splitMessage = message.content.toLowerCase().split(" ");
+		const splitMessage = message.content.split(" ");
 		if (splitMessage.length === 1) {
-			findTag(message.content.split(" ")[0]!).then((tag) => {
+			findTag(message.content.split(" ")[0]!.toLowerCase()).then((tag) => {
 				if (!tag) {
 					return;
 				}

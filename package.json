@@ -8,16 +8,16 @@
 		"build": "tsc"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.0.5",
-		"@types/node": "^24.0.3",
+		"@biomejs/biome": "^2.0.6",
+		"@types/node": "^24.0.10",
 		"tsx": "^4.20.3",
 		"typescript": "^5.8.3"
 	},
 	"dependencies": {
 		"@google/generative-ai": "^0.24.1",
 		"@typegoose/typegoose": "^12.17.0",
-		"discord.js": "^14.20.0",
-		"mongoose": "^8.16.0",
+		"discord.js": "^14.21.0",
+		"mongoose": "^8.16.1",
 		"reflect-metadata": "^0.2.2"
 	},
 	"packageManager": "pnpm@10.12.2+sha512.a32540185b964ee30bb4e979e405adc6af59226b438ee4cc19f9e8773667a66d302f5bfee60a39d3cac69e35e4b96e708a71dd002b7e9359c4112a1722ac323f",

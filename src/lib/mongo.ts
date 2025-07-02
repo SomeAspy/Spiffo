@@ -38,3 +38,7 @@ export async function findTag(triggerName: string) {
 		trigger: triggerName,
 	});
 }
+
+export async function getAllTags() {
+	return await getModelForClass(TagData).distinct("trigger");
+}
