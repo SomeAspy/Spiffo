@@ -3,7 +3,7 @@ import { supportPost } from "../functions/supportPost.js";
 import { findTag } from "../lib/mongo.js";
 
 export async function handleMessage(message: Message) {
-	if (message.channelId === process.env["SUPPORT_CHANNEL"]) {
+	if (message.channelId === process.env.SUPPORT_CHANNEL) {
 		supportPost(message);
 	}
 	try {

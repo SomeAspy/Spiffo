@@ -20,7 +20,7 @@ If you do not get a response, you are probably not being ignored, we simply do n
 SalemTechsperts and members of the server are not responsible for any further damage caused by following given advice.
             
 # Rules
-1. Do NOT ping <@&1149749390035128350> for help, only ping for moderation related issues
+1. Do NOT ping <@&1365434524959510528> for help, only ping for moderation related issues
 2. Do NOT make multiple posts for your issue
 
 # Tips/Recommendations
@@ -49,7 +49,7 @@ export const markSolvedButton = new ButtonBuilder()
 	.setLabel("Mark as Solved");
 
 export async function supportPost(message: Message) {
-	if (message.content.startsWith("no-ci")) {
+	if (message.content.startsWith(".ignore")) {
 		return;
 	}
 

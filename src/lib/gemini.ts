@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const geminiAPI = new GoogleGenerativeAI(process.env["GEMINI_KEY"]!);
+const geminiAPI = new GoogleGenerativeAI(process.env.GEMINI_KEY!);
 
 function timeout(time: number) {
 	return new Promise<never>((_, reject) => {
@@ -13,7 +13,7 @@ function timeout(time: number) {
 async function geminiAPIRequest(question: string) {
 	return new Promise<string>((resolve, reject) => {
 		const reply = geminiAPI
-			.getGenerativeModel({ model: "gemini-2.0-flash" })
+			.getGenerativeModel({ model: "gemini-2.5-flash" })
 			.generateContent([question]);
 		reply
 			.then((res) => {

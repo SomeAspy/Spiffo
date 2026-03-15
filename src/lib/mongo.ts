@@ -1,44 +1,31 @@
-import { getModelForClass } from "@typegoose/typegoose";
-import mongoose from "mongoose";
-import { MemberData, ServerData, TagData } from "../types/schemas.js";
+import { MongoClient } from "mongodb";
+import type { TagData } from "../types/schemas.js";
 
-console.log("connecting to db...");
-await mongoose.connect(
-	`mongodb://${process.env["DB_USER"]}:${process.env["DB_PASSWORD"]}@mongo:27017/SpiffoBot?authSource=admin`,
-);
+// not wrapped in try/catch because the bot cannot function without this
+console.info("Connecting to MongoDB instance...");
+const mongodb = new MongoClient(process.env.MONGODB!);
+await mongodb.connect();
+await mongodb.db().command({ ping: 1 });
+console.info("Received reply from MongoDB!");
 
-const _db = mongoose.connection.db;
+export async function newTag(trigger: string, content: string) {
+	await mongodb
+		.db()
+		.collection<TagData>("tags")
+		.insertOne({ trigger, content });
+}
 
-const _newServer = async (serverID: string) => {
-	await new (getModelForClass(ServerData))({
-		serverID,
-		memberData: [],
-		prefixes: ["-"],
-		tags: [],
-	}).save();
-};
+export async function findTag(trigger: string) {
+	return await mongodb
+		.db()
+		.collection<TagData>("tags")
+		.findOne<TagData>({ trigger });
+}
 
-const _newMember = async (memberID: string) => {
-	await new (getModelForClass(MemberData))({
-		memberID,
-		notes: [],
-	}).save();
-};
-
-export const newTag = async (trigger: string, content: string) => {
-	await new (getModelForClass(TagData))({
-		trigger,
-		content,
-		enabled: true,
-	}).save();
-};
-
-export async function findTag(triggerName: string) {
-	return await getModelForClass(TagData).findOne({
-		trigger: triggerName,
-	});
+export async function deleteTag(trigger: string) {
+	await mongodb.db().collection<TagData>("tags").deleteOne({ trigger });
 }
 
 export async function getAllTags() {
-	return await getModelForClass(TagData).distinct("trigger");
+	return await mongodb.db().collection<TagData>("tags").distinct("trigger");
 }

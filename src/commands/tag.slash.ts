@@ -3,7 +3,7 @@ import {
 	PermissionFlagsBits,
 	SlashCommandBuilder,
 } from "discord.js";
-import { findTag, getAllTags, newTag } from "../lib/mongo.js";
+import { deleteTag, findTag, getAllTags, newTag } from "../lib/mongo.js";
 export const data = new SlashCommandBuilder()
 	.setName("tag")
 	.setDescription("Manage tags")
@@ -22,23 +22,6 @@ export const data = new SlashCommandBuilder()
 					.setRequired(true)
 					.setName("content")
 					.setDescription("Response to the trigger"),
-			),
-	)
-	.addSubcommand((subcommand) =>
-		subcommand
-			.setName("toggle")
-			.setDescription("Enable or disable tags")
-			.addStringOption((input) =>
-				input
-					.setRequired(true)
-					.setName("trigger")
-					.setDescription("Which tag to toggle"),
-			)
-			.addBooleanOption((input) =>
-				input
-					.setRequired(true)
-					.setName("enabled")
-					.setDescription("Whether to enable this or not"),
 			),
 	)
 	.addSubcommand((subcommand) =>
@@ -80,24 +63,6 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 					content: `Added ${trigger}`,
 				});
 				break;
-			case "toggle":
-				{
-					const tag = await findTag(trigger);
-					if (!tag) {
-						interaction.reply({
-							flags: "Ephemeral",
-							content: "The specified tag does not exist!",
-						});
-						return;
-					}
-					tag.enabled = interaction.options.getBoolean("enabled")!;
-					await tag.save();
-					await interaction.reply({
-						flags: "Ephemeral",
-						content: `${tag.enabled ? "Enabled " : "Disabled "} ${trigger}`,
-					});
-				}
-				break;
 			case "delete":
 				{
 					const tag = await findTag(trigger);
@@ -108,7 +73,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 						});
 						return;
 					}
-					await tag.deleteOne({ trigger });
+					await deleteTag(trigger);
 					await interaction.reply({
 						flags: "Ephemeral",
 						content: `Deleted ${trigger}`,

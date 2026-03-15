@@ -61,10 +61,10 @@ export const buttons = [
 			);
 			(
 				interaction.client.channels.cache.get(
-					"1305571250499883018",
+					process.env.SUPPORT_CHANNEL!,
 				)! as TextChannel
 			).send(
-				`Help requested in https://discord.com/channels/${interaction.guildId}/${interaction.channelId}! <@&1299461176350216234>`,
+				`Help requested in https://discord.com/channels/${interaction.guildId}/${interaction.channelId}! <@&${process.env.SUPPORT_ROLE}>`,
 			);
 		},
 	},

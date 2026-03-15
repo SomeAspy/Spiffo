@@ -1,5 +1,3 @@
-import "reflect-metadata";
-
 import {
 	AutocompleteInteraction,
 	type ChatInputCommandInteraction,
@@ -54,4 +52,4 @@ client.on(Events.MessageCreate, (message) => {
 	}
 });
 
-await client.login(process.env["BOT_TOKEN"]);
+await client.login(process.env.BOT_TOKEN);
