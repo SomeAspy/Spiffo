@@ -8,17 +8,17 @@
 		"build": "tsc"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.4.7",
-		"@types/node": "^25.5.0",
+		"@biomejs/biome": "^2.4.12",
+		"@types/node": "^25.6.0",
 		"tsx": "^4.21.0",
-		"typescript": "^5.9.3"
+		"typescript": "^6.0.3"
 	},
 	"dependencies": {
-		"@google/generative-ai": "^0.24.1",
-		"discord.js": "^14.25.1",
-		"mongodb": "^7.1.0"
+		"@google/genai": "^1.50.1",
+		"discord.js": "^14.26.3",
+		"mongodb": "^7.2.0"
 	},
-	"packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be",
+	"packageManager": "pnpm@11.0.0-rc.5+sha512.c469fb6aa13a99e57aec935cd7b86ff422701f4602ecac2231d3dc20910586ebfb6b50a7b455d0778ec22ae56912d8d8e88e9f9e0a03c0875a6a41783a94a1bd",
 	"pnpm": {
 		"onlyBuiltDependencies": [
 			"esbuild"

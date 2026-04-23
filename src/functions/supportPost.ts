@@ -1,3 +1,4 @@
+import type { GenerateContentConfig } from "@google/genai";
 import {
 	ActionRowBuilder,
 	ButtonBuilder,
@@ -5,10 +6,7 @@ import {
 	EmbedBuilder,
 	type Message,
 } from "discord.js";
-import { askGemini } from "../lib/gemini.js";
-
-const geminiPrompt =
-	'Please create a title for this post that is under 50 characters. ONLY output the title and nothing else. If there is not enough info to make a title, return "More details needed". User\'s post: ';
+import { askGemini } from "../lib/libGemini.js";
 
 const newSupportPostMessage = `
 Please continue all discussion about your problem in this channel!
@@ -33,8 +31,17 @@ SalemTechsperts and members of the server are not responsible for any further da
 [More tips from iFixit](https://www.ifixit.com/Info/Asking_Great_Questions)
 `;
 
-const AttemptToSolvePrompt =
-	"Please attempt to solve the user's problem. You cannot receive follow-up responses. Do NOT use any links in your response. Use Discord flavored MarkDown. Keep ALL responses under 1000 characters. If the user lacks important details, ask them to include them. Do NOT suggest specific parts. The user's question is as follows: ";
+const SolutionAI: GenerateContentConfig = {
+	systemInstruction:
+		"Please attempt to solve the user's problem. You cannot receive follow-up responses. Do NOT use any links in your response. Use Discord flavored MarkDown. Keep ALL responses under 1000 characters. If the user lacks important details, ask them to include them. Do NOT suggest specific parts.",
+	temperature: 1.0,
+	tools: [{ googleSearch: {} }],
+};
+
+const TitleAI: GenerateContentConfig = {
+	systemInstruction:
+		'Please create a title for this post that is under 50 characters. ONLY output the title and nothing else. If there is not enough info to make a title, return "More details needed".',
+};
 
 export const pingSupportButton = new ButtonBuilder()
 	.setCustomId("support.pingHelpers")
@@ -53,7 +60,7 @@ export async function supportPost(message: Message) {
 		return;
 	}
 
-	const title = await askGemini(`${geminiPrompt}${message.content}`);
+	const title = await askGemini([{ text: message.content }], TitleAI);
 
 	const embed = new EmbedBuilder()
 		.setTitle(`Hi ${message.author.displayName}!`)
@@ -74,9 +81,7 @@ export async function supportPost(message: Message) {
 			.then((message) => {
 				message.pin();
 			});
-		const AISolution = await askGemini(
-			`${AttemptToSolvePrompt}${message.content}`,
-		);
+		const AISolution = await askGemini([{ text: message.content }], SolutionAI);
 		if (title === "{Error generating AI response}") {
 			void thread.send(
 				"⚠️ Failed to create AI title! <@&1305568566359101490> please add an appropriate title manually!",
