@@ -5,12 +5,12 @@ import {
 	Events,
 	IntentsBitField,
 } from "discord.js";
-import { indexCommands } from "./functions/indexCommands.js";
+import { indexCommands } from "./functions/indexCommands.ts";
 
-import { pushCommands } from "./functions/pushCommands.js";
-import { handleButton } from "./handler/handleButton.js";
-import { handleMessage } from "./handler/message.js";
-import { handleCommand } from "./handler/slashCommand.js";
+import { pushCommands } from "./functions/pushCommands.ts";
+import { handleButton } from "./handler/handleButton.ts";
+import { handleMessage } from "./handler/message.ts";
+import { handleCommand } from "./handler/slashCommand.ts";
 
 const commands = await indexCommands();
 

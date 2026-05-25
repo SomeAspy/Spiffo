@@ -1,6 +1,6 @@
 import type { Message } from "discord.js";
-import { supportPost } from "../functions/supportPost.js";
-import { findTag } from "../lib/mongo.js";
+import { supportPost } from "../functions/supportPost.ts";
+import { findTag } from "../lib/mongo.ts";
 
 export async function handleMessage(message: Message) {
 	if (message.channelId === process.env.SUPPORT_CHANNEL) {

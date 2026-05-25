@@ -4,7 +4,7 @@ import {
 	Routes,
 } from "discord.js";
 
-import type { CommandStore } from "../types/Command.js";
+import type { CommandStore } from "../types/Command.d.ts";
 
 export async function pushCommands(commands: CommandStore) {
 	const restClient = new REST().setToken(process.env.BOT_TOKEN!);

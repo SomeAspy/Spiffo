@@ -9,7 +9,7 @@ import {
 import {
 	markSolvedButton,
 	pingSupportButton,
-} from "../functions/supportPost.js";
+} from "../functions/supportPost.ts";
 
 export const data = new SlashCommandBuilder().setName("ignore");
 

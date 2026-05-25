@@ -1,5 +1,5 @@
 import { readdirSync } from "node:fs";
-import type { Command } from "../types/Command.js";
+import type { Command } from "../types/Command.d.ts";
 
 export async function indexCommands() {
 	const commands = new Map<string, Command>();

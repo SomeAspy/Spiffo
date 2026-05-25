@@ -1,5 +1,5 @@
 import type { ButtonInteraction } from "discord.js";
-import type { CommandStore } from "../types/Command.js";
+import type { CommandStore } from "../types/Command.d.ts";
 
 export async function handleButton(
 	interaction: ButtonInteraction,

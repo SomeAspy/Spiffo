@@ -3,7 +3,7 @@ import {
 	PermissionFlagsBits,
 	SlashCommandBuilder,
 } from "discord.js";
-import { deleteTag, findTag, getAllTags, newTag } from "../lib/mongo.js";
+import { deleteTag, findTag, getAllTags, newTag } from "../lib/mongo.ts";
 export const data = new SlashCommandBuilder()
 	.setName("tag")
 	.setDescription("Manage tags")

@@ -6,7 +6,7 @@ import {
 	EmbedBuilder,
 	type Message,
 } from "discord.js";
-import { askGemini } from "../lib/libGemini.js";
+import { askGemini } from "../lib/libGemini.ts";
 
 const newSupportPostMessage = `
 Please continue all discussion about your problem in this channel!
