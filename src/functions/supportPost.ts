@@ -10,13 +10,13 @@ import { askGemini } from "../lib/libGemini.ts";
 
 const newSupportPostMessage = `
 Please continue all discussion about your problem in this channel!
-            
+
 Keep in mind everyone who helps you with your problems are volunteers, and are not required to do so
 
 If you do not get a response, you are probably not being ignored, we simply do not have any solution for your problem
 
 SalemTechsperts and members of the server are not responsible for any further damage caused by following given advice.
-            
+
 # Rules
 1. Do NOT ping <@&1365434524959510528> for help, only ping for moderation related issues
 2. Do NOT make multiple posts for your issue
@@ -34,7 +34,6 @@ SalemTechsperts and members of the server are not responsible for any further da
 const SolutionAI: GenerateContentConfig = {
 	systemInstruction:
 		"Please attempt to solve the user's problem. You cannot receive follow-up responses. Do NOT use any links in your response. Use Discord flavored MarkDown. Keep ALL responses under 1000 characters. If the user lacks important details, ask them to include them. Do NOT suggest specific parts.",
-	temperature: 1.0,
 	tools: [{ googleSearch: {} }],
 };
 

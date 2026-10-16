@@ -11,7 +11,7 @@ export async function askGemini(
 	config: GenerateContentConfig = {},
 ) {
 	const response = await geminiAPI.models.generateContent({
-		model: "gemini-3.1-flash-lite",
+		model: "gemini-3.8-flash",
 		contents,
 		config,
 	});
